@@ -1,0 +1,6 @@
+# this will stop nobody
+# src: mustard.cx
+# lic: /LICENSE_MIT
+# ver: 1.0
+User-agent: *
+Disallow: /4d3d3d3/

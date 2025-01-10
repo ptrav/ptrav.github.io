@@ -1,0 +1,47 @@
+// src: mustard.cx
+// lic: /LICENSE_MIT
+// ver: 1.0
+document.documentElement.className = document.documentElement.className.replace("no-js", "js");
+document.addEventListener("DOMContentLoaded", () => {
+    // computer, load up celery man
+    const noJsBanner = document.querySelector('.no-js-banner');
+    const showWarning = document.querySelector('.no-js-warning-box');
+    const emailLink = document.getElementById("email-link");
+    const alertBanner = document.getElementById("banner-help");
+    const closeAlert = document.getElementById("banner-help-dismiss");
+    if (noJsBanner) noJsBanner.style.display = 'none';
+    if (showWarning) showWarning.style.display = 'none';
+    let clickCount = 0;
+    if (emailLink) {
+        emailLink.addEventListener("click", async (event) => {
+            event.preventDefault();
+            try {
+                const response = await fetch('4d3d3d3/engage'); // be aware of CORS when debugging
+                if (!response.ok) throw new Error('Could not load source string.');
+                const base64Email = await response.text();
+                const decodedEmail = atob(base64Email.trim());
+                emailLink.href = `mailto:${decodedEmail}`;
+                window.location.href = emailLink.href;
+                setTimeout(() => {  // clear plaintext after 2 seconds
+                    emailLink.href = '#';
+                    console.log("Email link cleared. Click button again to retry.")
+                }, 2000);
+                clickCount++;
+                if (clickCount >= 2 && alertBanner) {
+                    alertBanner.style.display = "block";
+                }
+            } catch (error) {
+                console.error('Error loading email link:', error);
+                alert('An error occurred. Please check the console for details.');
+            }
+        });
+    }
+    // hide help banner and reset click counter if user dismisses
+    if (closeAlert) {
+        closeAlert.addEventListener("click", () => {
+            if (alertBanner) alertBanner.style.display = "none";
+            clickCount = 0;
+        });
+    }
+    console.log("Script initialized successfully. Thanks for visiting!")
+});

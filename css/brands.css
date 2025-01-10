@@ -1,0 +1,48 @@
+/*
+  src: github.com/sethcottle/littlelink/tree/v3.0.2/css/brands.css
+  lic: /LICENSE_MIT
+  ver: 1.0
+  Modified from src by mustard.cx
+*/
+/* brand button styling */
+.button,button {
+  color:var(--button-text,#000000);
+  background-color:var(--button-background,transparent);
+	border:var(--button-border,none);
+	transition:filter 0.2s ease,transform 0.2s ease;
+}
+.button:hover,button:hover {
+	filter:brightness(90%);
+	transform:translateY(-1px);
+}
+.icon {
+	filter:var(--icon-filter,none);
+}
+.button.button-default {
+	--button-text:#ffffff;
+	--button-background:#2457F5;
+	--button-border:1px solid #ffffff;
+}
+.button.generic-email {
+	--button-text:#ffffff;
+	--button-background:#2457F5;
+	--button-border:1px solid #ffffff;
+}
+.button-bluesky {
+	--button-text:#000000;
+	--button-background:#FFFFFF;
+	--button-border:1px solid #000000;
+}
+.button-github {
+	--button-text:#ffffff;
+	--button-background:#000000;
+	--button-border:1px solid #FFFFFF;
+}
+.button-linkedin {
+	--button-text:#ffffff;
+	--button-background:#2867b2;
+}
+.button-signal {
+	--button-text:#ffffff;
+	--button-background:#3a76f0;
+}

@@ -1,0 +1,388 @@
+/*
+  src: github.com/sethcottle/littlelink/tree/v3.0.2/css/style.css
+  lic: /LICENSE_MIT
+  ver: 1.0
+  Modified from src by mustard.cx
+*/
+:root {
+	font-size:16px;
+}
+/* hide no-js banner by default */
+.no-js-banner {
+	display: none;
+}
+/* no-js: default styling */
+.no-js .no-js-banner {
+    display: block;
+	background-color: #ffcc00;
+    color: #333;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+/* no-js: disable email button & add text */
+.no-js #email-link {
+    background-color: #ccc;
+    color: #666;
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.6;
+	position: relative;
+}
+.no-js #email-link::after {
+    content: " (Disabled without JavaScript)";
+    font-size: 0.9rem;
+    color: #ff0000;
+    margin-left: 5px;
+}
+/* no-js: hide banner when user clicks dismiss */
+.no-js-checkbox:checked ~ .no-js-banner {
+    display: none;
+}
+/* no-js: show warning box when banner dismissed */
+.no-js-warning-box {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #333;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: none;
+    z-index: 1000;
+}
+.no-js-warning-box-link {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+.no-js-warning-box-link:hover {
+    color: #ffcc00;
+}
+.no-js-checkbox:checked ~ .no-js-warning-box {
+    display: block;
+}
+/* js: preempt possible flash of no-js banner */
+.js .no-js-banner {
+    display: none;
+}
+/* mailto help banner */
+.banner-help {
+    display: none;
+    background-color: #ffcc00;
+    color: #333;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.banner-help-dismiss {
+    background: none;
+    border: none;
+    font-weight: bold;
+    color: #333;
+    text-decoration: underline;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.banner-help-dismiss:hover {
+    color: #000;
+}
+/* grid */
+.container {
+	position:relative;
+	width:100%;
+	max-width:37.5rem;     				/* 600px */
+    text-align:center;
+	margin:0 auto;
+	padding:3rem 1.25rem 0 1.25rem;
+	box-sizing:border-box;
+}
+.container-left {
+	position:relative;
+	width:100%;
+	max-width:37.5rem;
+	text-align:left;
+	margin:0 auto;
+	padding:0 1.25rem;
+	box-sizing:border-box;
+}
+.container-left p {
+	margin-bottom: 1rem;			/* 16px space between paragraphs */
+}
+.column {
+	position:center;
+	width:100%;
+	float:center;
+	box-sizing:border-box;
+}
+@media (min-width:25rem) {			/* 400px */
+	.container {
+		width:85%;
+		padding-left:0;
+		padding-right:0;
+	}
+}
+@media (min-width:34.375rem) {		/* 550px */
+    .container {
+	width:80%;
+	}
+	.column,.columns {
+	margin-left:0;
+	}
+	.column:first-child,.columns:first-child {
+	margin-left:0;
+	}
+}
+/* base styles */
+body {
+	margin:0;
+	padding:0;
+	background-color:#ffffff;
+	color:#1a1a1a;
+	font-family:"Open Sans",system-ui;
+	font-size:1.125rem;				/* 18px */
+    font-weight:400;
+	line-height:1.6;
+}
+h1 {
+	margin:0 0 0.5rem 0;
+	font-size:3rem;         		/* 48px */
+    font-weight:800;
+	line-height:1;
+	letter-spacing:0;
+	word-wrap:break-word;
+	overflow-wrap:break-word;
+	hyphens:auto;
+}
+.container p {
+	margin:0 0 2rem 0;
+}
+/* base typography */
+/* 16px browser default */
+:root {
+  font-size:16px;		/* Using a 1.25 modular scale for typography */
+  --scale-0:1rem;		/* 16px */
+  --scale-1:1.25rem;	/* 20px */
+  --scale-2:1.563rem;	/* 25px */
+  --scale-3:1.953rem;	/* 31px */
+  --scale-4:2.441rem;	/* 39px */
+  --scale-5:3.052rem;	/* 49px */
+  
+  /* spacing units */
+  --spacing-xs:0.5rem;	/* 8px */
+  --spacing-s:1rem;		/* 16px */
+  --spacing-m:1.5rem;	/* 24px */
+  --spacing-l:2rem;		/* 32px */
+  --spacing-xl:3rem;	/* 48px */
+  --spacing-xxl:4rem;	/* 64px */
+}
+/* avatar */
+.avatar {
+	width: 8rem;		/* 128px */
+	height: 8rem;
+	border-radius: 50%;
+	object-fit: cover;
+	background-position: center;
+	margin-bottom: var(--spacing-l);
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+  }
+/* scaling */
+h1 {
+	margin:0 0 var(--spacing-m) 0;
+	font-size:var(--scale-5);		/* ~49px */
+  	font-weight:800;
+	line-height:1.1;
+	letter-spacing:-0.02em;
+	word-wrap:break-word;
+	overflow-wrap:break-word;
+}
+body {
+	font-size:var(--scale-1);		/* 20px */
+  	line-height:1.6;
+}
+.container p {
+	margin:0 0 var(--spacing-xl) 0;
+	font-size:var(--scale-1);
+	line-height:1.6;
+}
+/* container spacing */
+.container {
+	padding:var(--spacing-xl) var(--spacing-m) 0 var(--spacing-m);
+	text-align:center;
+}
+/* footer */
+footer {
+	margin:var(--spacing-xxl) 0;	/* 4rem (64px) top and bottom */
+    font-size:var(--scale-0);
+}
+/* responsive adjustments */
+@media (max-width:34.375rem) {		/* 550px */
+	h1 {
+		font-size:var(--scale-4);
+	}
+	body {
+		font-size:var(--scale-0);
+	}
+	.container p {
+		font-size:var(--scale-0);
+	}
+	.avatar {
+		margin-bottom:var(--spacing-m);
+	}
+	footer {
+		margin:var(--spacing-xl) 0;		/* 3rem (48px) top and bottom */
+	}
+}
+/* link styling */
+a {
+	color:#2457F5;
+	text-decoration:underline;
+}
+a:hover {
+	color:#083BDA;
+}
+/* button styling */
+.button,button {
+	display:inline-flex;
+	align-items:center;
+	justify-content:center;
+	width:18.75rem;					/* 300px */
+ 	min-height:3rem;				/* 48px */
+  	padding:0.75rem 1rem;			/* 12px ; 16px */
+  	font-size:1.125rem;				/* 18px */
+  	font-weight:700;
+	text-decoration:none;
+	white-space:normal;
+  	background-color:var(--button-background,transparent);
+	color:var(--button-text,#000000);
+	border:var(--button-border,none);
+	border-radius:0.5rem;
+	cursor:pointer;
+	box-sizing:border-box;
+	hyphens:auto;
+  	margin-bottom:1rem;
+	text-align:center;
+	line-height:1.3;
+}
+/* icon styling */
+.icon {
+	width:1.25rem;
+	height:1.25rem;
+	margin-right:0.5rem;
+	flex-shrink:0;
+}
+/* avatar styling */
+.avatar {
+	width: 8rem;				/* 128px */
+	height: 8rem;
+	object-fit: cover;
+	background-position: center;
+	margin-bottom: var(--spacing-l);
+}
+.avatar-none {
+	border-radius: 0%;
+}
+.avatar-rounded {
+	border-radius: 50%;
+}
+.avatar-soft {
+	border-radius: 0.5rem;   /* 8px rounded corners */
+}
+/* theming - light/dark/auto (light is defined above) */
+/* dark theme */
+:root.theme-dark {
+	color-scheme:dark;
+}
+:root.theme-dark :focus-visible {
+	outline: 2px solid #4899F7;
+	outline-offset: 2px;
+}
+:root.theme-dark body {
+	background-color:#121212;
+	color:#ffffff;
+}
+:root.theme-dark a:not(.button) {
+	color:#4899F7;
+}
+:root.theme-dark a:not(.button):hover {
+	color:#7AB8FF;
+}
+/* auto theme */
+:root.theme-auto {
+	color-scheme:light dark;
+}
+@media (prefers-color-scheme:dark) {
+	:root.theme-auto body {
+		background-color:#121212;
+		color:#ffffff;
+	}
+	:root.theme-auto :focus-visible {
+		outline: 2px solid #4899F7;
+		outline-offset: 2px;
+	}
+	:root.theme-auto a:not(.button) {
+		color:#4899F7;
+	}
+	:root.theme-auto a:not(.button):hover {
+		color:#7AB8FF;
+	}
+}
+/* button text color override */
+.button:hover,button:hover {
+	color:var(--button-text);
+}
+/* responsive typography */
+@media (max-width:34.375rem) {		/* 550px */
+	h1 {
+		font-size:2rem;				/* 32px */
+	}
+	body {
+		font-size:1rem;				/* 16px */
+	}
+}
+/* main font definitions */
+@font-face {
+	font-display:swap;
+	font-family:'Open Sans';
+	font-style:normal;
+	font-weight:400;
+	src:url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-regular.eot');
+	src:url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-regular.eot?#iefix') format('embedded-opentype'),url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-regular.woff2') format('woff2'),url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-regular.woff') format('woff'),url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-regular.ttf') format('truetype'),url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-regular.svg#OpenSans') format('svg');
+}
+@font-face {
+	font-display:swap;
+	font-family:'Open Sans';
+	font-style:normal;
+	font-weight:600;
+	src:url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-600.eot');
+	src:url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-600.eot?#iefix') format('embedded-opentype'),url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-600.woff2') format('woff2'),url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-600.woff') format('woff'),url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-600.ttf') format('truetype'),url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-600.svg#OpenSans') format('svg');
+}
+@font-face {
+	font-display:swap;
+	font-family:'Open Sans';
+	font-style:normal;
+	font-weight:700;
+	src:url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-700.eot');
+	src:url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-700.eot?#iefix') format('embedded-opentype'),url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-700.woff2') format('woff2'),url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-700.woff') format('woff'),url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-700.ttf') format('truetype'),url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-700.svg#OpenSans') format('svg');
+}
+@font-face {
+	font-display:swap;
+	font-family:'Open Sans';
+	font-style:normal;
+	font-weight:800;
+	src:url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-800.eot');
+	src:url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-800.eot?#iefix') format('embedded-opentype'),url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-800.woff2') format('woff2'),url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-800.woff') format('woff'),url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-800.ttf') format('truetype'),url('../fonts/open-sans-v34-vietnamese_latin-ext_latin_hebrew_greek-ext_greek_cyrillic-ext_cyrillic-800.svg#OpenSans') format('svg');
+}
